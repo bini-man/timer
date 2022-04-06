@@ -11,7 +11,7 @@ function App() {
 const [timer,setTimer]=useState({sec:0,min:minute})
 const [interv,setInterv]=useState()
 const [status,setStatus]=useState(3)
-const [speed,setSpeed]=useState(100)
+const [speed,setSpeed]=useState(1000)
 const start = ()=>{
   setStatus(1)
  
