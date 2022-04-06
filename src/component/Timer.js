@@ -1,20 +1,26 @@
-import { Pause, PauseCircle } from '@mui/icons-material';
-import { Button, IconButton, TextField, Typography } from '@mui/material';
-import React from 'react';
+
+import {  Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react';
 
 export default function Timer(props) {
-   
+  const [texts,setTexts]=useState('')
+  useEffect(()=>{
+    if(props.min/2>=props.updatedmin && props.updatedmin!=0){
+      setTexts("More than half way there")
+    }
+    if(props.updatedmin==0&&props.updatedsec==0&&props.min!=0&&props.status!=3){
+      setTexts("Times Up")
+    }
+    if(props.updatedmin==0&&props.updatedsec==20){
+      console.log("color red")
+    }
+  })
  return (
     <div>
     
-<Typography variant="h5" component="h2"> More than a half way</Typography>
+<Typography variant="h5" component="h2"> { texts }</Typography>
 <Typography fontWeight="fontWeightBold" variant="h5" component="h2"> {props.timer.min}:{props.timer.sec}</Typography>
-<IconButton onClick={()=>console.log("bini")}>
-    <PauseCircle color='secondary'/>
-</IconButton>
-<Button variant='outlined'>1x</Button>
-<Button variant='outlined'>1.5x</Button>
-<Button variant='outlined'>2x</Button>
+
     </div>
   )
 }
