@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import ButtonComponet from "./component/ButtonComponet";
+import Timer from "./component/Timer";
 
 function App() {
+const [timer,setTimer]=useState({sec:10,min:10})
+const start = ()=>{
+  run();
+  setInterval(run,1000)
+}
+const run = () =>{
+  if(updatedsec===0){
+    updatedmin--;
+    updatedsec=60
+  }
+  updatedsec--;
+  return setTimer({sec:updatedsec,min:updatedmin});
+}
+var updatedsec = timer.sec , updatedmin = timer.min;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ButtonComponet start={start}/>
+    <Timer timer={timer}/>
+    
     </div>
   );
 }
