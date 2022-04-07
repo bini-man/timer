@@ -12,14 +12,14 @@
       visibility: hidden;
     }
   }
-  #notification{
+#notification{
     padding-top: 10%;
     padding-left: 35%;
     width: 100%;
     display: inline-block;
     align-items: center;
   }
-  #counter{
+#counter{
     padding-left: 33%;
     width: 100%;
     display: flex;
