@@ -2,12 +2,15 @@ import './Timer.css'
 import {  Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { makeFalse } from "../redux/counter"
 export default function Timer(props) {
       const [texts,setTexts]=useState('')
       const [text_color,setText_color]=useState('black')
       const [display,setDisplay]=useState('none')
       const [displayOrg,setDisplayOrg]=useState('')
-      let ch=props.changed
+      const dispatch=useDispatch()
+      const {value}=useSelector(state=>state.counter)
       const style={
         color:'#FF0000',
         display:display,
@@ -41,13 +44,14 @@ export default function Timer(props) {
               setDisplay('')
               setDisplayOrg('none')
             }
-            if(ch===true){
-                setTexts("")
-                setText_color("black")
-                setDisplay('none')
-                ch=false
+            if(value===true){
+              setDisplay('none')
+              setText_color('black')
+              setTexts("")
+              setDisplayOrg("")
+              dispatch(makeFalse())
             }
-  },[props.updatedsec,props.min, props.status,props.updatedmin])
+  },[props.updatedsec,props.min, props.status,props.updatedmin,dispatch,value])
  return (
     <div>
             <Typography id="notification" variant="h5" component="h2">{texts}</Typography>
